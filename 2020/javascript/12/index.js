@@ -1,9 +1,11 @@
 const fs = require("fs");
 const Ship = require("./src/Ship");
+const Waypoint = require("./src/Waypoint");
 
 const instructions = fs.readFileSync("./input.txt", "utf-8").split("\n");
 
-const ship = new Ship([0, 0], "E");
+const waypoint = new Waypoint([10, 1]);
+const ship = new Ship([0, 0], waypoint);
 
 for (const instruction of instructions) {
   const direction = instruction.substring(0, 1);
@@ -12,4 +14,4 @@ for (const instruction of instructions) {
   ship.move(direction, value);
 }
 
-console.log(ship.getManhattanDistance());
+console.log(ship.manhattanDistance);
